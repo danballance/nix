@@ -1,19 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # Bootloader.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;    # don’t rely on NVRAM
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiInstallAsRemovable = false;
-  boot.loader.efi.efiSysMountPoint = "/boot";  # FAT32 ESP-NIX
- 
   # global nix package settings 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.package = pkgs.nixVersions.latest;
-  nixpkgs.config.allowUnfree = true;
 
   # networking
   networking.hostName = "mouse";
@@ -42,11 +32,13 @@
   console.keyMap = "uk";
 
   # User(s)
+  programs.fish.enable = true;
   users.users.anoni = {
     isNormalUser = true;
     description = "Anoni";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.fish;
   };
 
 
@@ -56,7 +48,11 @@
     curl   
     git  
     gptfdisk
+    jetbrains.rust-rover
+    lazyjournal
     parted
+    proton-pass
+    systemctl-tui
     vim
     wget
     yazi

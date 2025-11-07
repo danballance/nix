@@ -3,19 +3,28 @@
 {
   programs.hyprland = {
     enable = true;
+    xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
-  
-  # Essential packages for Hyprland
+
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
+
   environment.systemPackages = with pkgs; [
     ghostty
-    mako
+    hyprcursor
+    hypridle
+    hyprlock
     hyprpaper
+    hyprpicker
+    hyprpolkitagent
+    hyprsunset
+    kdePackages.dolphin
+    kdePackages.qtsvg
+    pyprland
     waybar
-    grim
-    slurp
-    wl-clipboard
+    wofi
   ];
   
   xdg.portal = {
@@ -24,8 +33,8 @@
   };
   
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";  # Hint Electron apps to use Wayland
-    WLR_NO_HARDWARE_CURSORS = "1";  # Fix cursor issues
+    NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
   
   services.pipewire = {
