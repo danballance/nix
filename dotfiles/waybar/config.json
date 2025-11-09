@@ -1,0 +1,136 @@
+[
+  {
+    "name": "mainBar",
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 0,
+
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+    "modules-center": [
+      "hyprland/window"
+    ],
+    "modules-right": [
+      "wlr/taskbar",
+      "network",
+      "cpu",
+      "memory",
+      "battery",
+      "clock"
+    ],
+
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "on-click": "activate",
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "0"
+      },
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": []
+      }
+    },
+
+    "hyprland/window": {
+      "format": "{}",
+      "max-length": 75
+    },
+
+    "cpu": {
+      "format": "{usage}% 󰍛"
+    },
+
+    "clock": {
+      "format": "{:%A %H:%M}",
+      "format-alt": "{:%d %B W%V %Y}",
+      "tooltip": false
+    },
+
+    "memory": {
+      "format": "{}% "
+    },
+
+    "battery": {
+      "format": "{capacity}% {icon}",
+      "format-discharging": "{capacity}% {icon}",
+      "format-charging": "{capacity}% {icon}",
+      "format-plugged": "{capacity}% ",
+      "format-icons": {
+        "charging": [
+          "󰢜",
+          "󰂆",
+          "󰂇",
+          "󰂈",
+          "󰢝",
+          "󰂉",
+          "󰢞",
+          "󰂊",
+          "󰂋",
+          "󰂅"
+        ],
+        "default": [
+          "󰁺",
+          "󰁻",
+          "󰁼",
+          "󰁽",
+          "󰁾",
+          "󰁿",
+          "󰂀",
+          "󰂁",
+          "󰂂",
+          "󰁹"
+        ]
+      },
+      "format-full": "{capacity}% 󰂅",
+      "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+      "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+      "interval": 5,
+      "states": {
+        "warning": 20,
+        "critical": 10
+      }
+    },
+
+    "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 20,
+      "all-outputs": true,
+      "active-first": true,
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "ignore-list": [
+        "rofi"
+      ]
+    },
+
+    "network": {
+      "format-wifi": "{signalStrength}% ",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    }
+  }
+]
+
