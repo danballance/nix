@@ -7,6 +7,8 @@
     dotfilesDir = "/home/anoni/.nixos/dotfiles";
     files = [
       { target = ".config/hypr"; source = "hypr"; }
+      { target = ".config/waybar"; source = "waybar"; }
+      { target = ".vimrc"; source = ".vimrc"; }
     ];
   };
 }

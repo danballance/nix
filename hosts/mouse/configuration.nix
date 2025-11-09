@@ -47,15 +47,7 @@
   environment.systemPackages = with pkgs; [
     curl   
     git  
-    gptfdisk
-    jetbrains.rust-rover
-    lazyjournal
-    parted
-    proton-pass
-    systemctl-tui
     vim
-    wget
-    yazi
   ];
 
   # List services that you want to enable:

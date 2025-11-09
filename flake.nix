@@ -18,6 +18,7 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,22 +56,31 @@
               ./modules/core/nixpkgs.nix
               
               # Desktop environment
-              ./modules/desktop/display-manager.nix
+              ./modules/desktop/graphics.nix
               ./modules/desktop/hyprland.nix
+              ./modules/desktop/login.nix
+              ./modules/desktop/nerd-fonts.nix
+              ./modules/desktop/pipewire.nix
+              ./modules/desktop/pixelbook-avs.nix
 
-              # programs - temporary - switch to profiles once stable
-              ./modules/programs/zen-browser.nix
+              # programs
+              ./modules/programs/cli.nix
+              ./modules/programs/communication.nix
+              ./modules/programs/dev-tools.nix
               ./modules/programs/starship.nix
+              ./modules/programs/zen-browser.nix
               
-              # Profile (choose one)
-              #./modules/profiles/workstation.nix
             ];
           };
         };
       };
       
       # Development shells
-      perSystem = { config, pkgs, ... }: {
+      perSystem = { config, system, pkgs, ... }: {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         devShells = {
           default = pkgs.mkShell {
             packages = with pkgs; [
@@ -79,8 +89,8 @@
             ];
           };
           
-          #rust = import ./shells/rust.nix { inherit pkgs; };
-          #web = import ./shells/web.nix { inherit pkgs; };
+          rust = import ./shells/rust.nix { inherit pkgs; };
+          bevy = import ./shells/bevy.nix { inherit pkgs; };
         };
       };
     };

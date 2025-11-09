@@ -34,4 +34,6 @@
     TTYVHangup = true;
     TTYVTDisallocate = true;
   };
+
+  services.logind.powerKey = "ignore";
 }
