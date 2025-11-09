@@ -1,15 +1,11 @@
 {pkgs, ...}:
 {
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   
   hardware.enableRedistributableFirmware = true;
   hardware.firmwareCompression = "none";
   
-  #environment.systemPackages = with pkgs; [
-  #  pavucontrol
-  #];
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;

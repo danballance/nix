@@ -35,5 +35,5 @@
     TTYVTDisallocate = true;
   };
 
-  services.logind.powerKey = "ignore";
+   services.logind.settings.Login.HandlePowerKey = "ignore";
 }
