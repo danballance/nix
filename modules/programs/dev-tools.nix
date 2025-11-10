@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-		aseprite  
+		aseprite
     claude-code
 		gimp3-with-plugins
     gitkraken
 		#jetbrains.datagrip
 		#jetbrains.pycharm-professional
-		jetbrains.rust-rover
+		#jetbrains.rust-rover
     zed-editor-fhs
   ];
 }
