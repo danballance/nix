@@ -46,6 +46,7 @@
             };
             
             modules = [
+
               # Host-specific config
               ./hosts/mouse/hardware-configuration.nix
               ./hosts/mouse/configuration.nix
@@ -68,6 +69,7 @@
               ./modules/programs/communication.nix
               ./modules/programs/dev-tools.nix
               ./modules/programs/starship.nix
+              ./modules/programs/system.nix
               ./modules/programs/zen-browser.nix
               
             ];
