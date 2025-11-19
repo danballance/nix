@@ -1,8 +1,12 @@
-{ ... }:
+{ inputs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
   programs.direnv.enable = true;
   programs.nix-ld.enable = true;
+
+  nixpkgs = {
+    config.allowUnfree = true;
+  };
+
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     download-buffer-size = 500000000; # 500 MB

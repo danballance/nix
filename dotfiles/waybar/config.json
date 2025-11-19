@@ -3,7 +3,7 @@
     "name": "mainBar",
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 50,
     "spacing": 0,
 
     "modules-left": [

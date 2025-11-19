@@ -3,12 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,11 +18,12 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -30,21 +31,21 @@
       imports = [
         # Add flake-parts modules here if needed
       ];
-      
+
       systems = [ "x86_64-linux" ];
-      
+
       flake = {
         nixosConfigurations = {
           mouse = inputs.nixpkgs.lib.nixosSystem {
-            
+
             # Pass inputs to all modules
-            specialArgs = { 
+            specialArgs = {
               inherit inputs;
               system = "x86_64-linux";
               username = "anoni";
               hostname = "mouse";
             };
-            
+
             modules = [
 
               # Host-specific config
@@ -52,10 +53,10 @@
               ./hosts/mouse/configuration.nix
               ./hosts/mouse/bootloader.nix
               ./hosts/mouse/dotfiles.nix
-              
+
               # Core modules
               ./modules/core/nixpkgs.nix
-              
+
               # Desktop environment
               ./modules/desktop/graphics.nix
               ./modules/desktop/hyprland.nix
@@ -71,12 +72,12 @@
               ./modules/programs/starship.nix
               ./modules/programs/system.nix
               ./modules/programs/zen-browser.nix
-              
+
             ];
           };
         };
       };
-      
+
       # Development shells
       perSystem = { config, system, pkgs, ... }: {
         _module.args.pkgs = import inputs.nixpkgs {
@@ -90,7 +91,7 @@
               nil
             ];
           };
-          
+
           rust = import ./shells/rust.nix { inherit pkgs; };
           bevy = import ./shells/bevy.nix { inherit pkgs; };
         };

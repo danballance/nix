@@ -1,0 +1,24 @@
+# Dynamic theme colors
+config-file = ?"~/.config/theme/ghostty.conf"
+
+# Font
+font-family = "CaskaydiaMono Nerd Font"
+font-style = Regular
+font-size = 14
+
+# Window
+window-theme = ghostty
+window-padding-x = 12
+window-padding-y = 12
+confirm-close-surface=false
+resize-overlay = never
+gtk-toolbar-style = flat
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = true
+
+# Cursor styling + SSH session terminfo
+# (all shell integration options must be passed together)
+shell-integration-features = no-cursor,ssh-env
+

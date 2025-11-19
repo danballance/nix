@@ -12,6 +12,7 @@ in {
       { target = ".config/waybar"; source = "waybar"; }
       { target = ".vimrc"; source = ".vimrc"; }
       { target = ".config/theme"; source = "omarchy-themes/${currentTheme}"; }
+      { target = ".config/ghostty"; source = "ghostty"; }
     ];
   };
 }
