@@ -1,12 +1,10 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   environment.systemPackages = with pkgs; [
 		aseprite
     claude-code
 		gimp3-with-plugins
     gitkraken
-		#jetbrains.datagrip
-		#jetbrains.pycharm-professional
-		#jetbrains.rust-rover
+    inputs.frosty-vim.packages.${pkgs.system}.default
     zed-editor-fhs
   ];
 }
